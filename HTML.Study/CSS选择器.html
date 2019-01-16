@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS的三种基本选择器</title>
+    <style>
+        /* 标签选择器 通过标签来设置元素的样式 影响范围大*/
+        /*div{*/
+            /*width: 100px;*/
+            /*height: 100px;*/
+            /*background-color: green;*/
+        /*}*/
+
+        /* . 类选择器 通过class类名来设置元素的样式 影响范围可控制*/
+
+        .item1{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .item2{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+
+        /* # ID选择器通过ID属性的值来设置元素的样式*/
+        /* 注意：ID在HTML中具有唯一性，不能重名 不能重复使用*/
+        #box1{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <div class="item1"></div>
+    <div class="item2"></div>
+    <div class="item1"></div>
+    <div id="box1"></div>
+</body>
+</html>
