@@ -1,0 +1,61 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/*  垂直导航栏
+ul{
+    list-style: none;
+    background-color: aquamarine;
+    height: 200px;
+    width: 300px;
+}
+
+li a{
+    width: 300px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+ul li{
+    line-height: 40px;
+}
+
+li a:hover{
+    background-color: slategray;
+}
+
+li a:active{
+    background-color: blue;
+}*/
+
+
+ul{
+    list-style: none;
+    background-color: beige;
+    overflow: hidden;
+
+}
+
+ul li{
+    float: left;
+}
+
+li a{
+    text-decoration: none;
+    display: block;
+    padding: 10px 30px;
+    text-align: center;
+}
+
+a:hover{
+    background-color: plum;
+}
+
+.so{
+    position: absolute;
+    right: 10px;
+    top: 3px;
+}
+
