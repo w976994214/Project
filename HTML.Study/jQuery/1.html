@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <style>
+        .item1{
+            height: 50px;
+            width: 50px;
+            background: red;
+        }
+
+        .item2{
+            height: 50px;
+            width: 50px;
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="item1">ID选择器1</div>
+    <div class="item2">ID选择器2</div>
+
+
+    <script>
+        $('.item1,.item2').css('background','blue');
+
+    </script>
+
+
+</body>
+</html>
