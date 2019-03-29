@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>VUE</title>
+    <script src="vue_2.6.10.js"></script>
 </head>
 <body>
-
+    <!--1.创建容器-->
+    <div id="app">
+        {{msg}}
+    </div>
+    <script>
+        //2.创建vue实例
+        var VM = new Vue({
+            el:'#app',
+            data:{
+                msg:'你好',
+            }
+        })
+    </script>
 </body>
 </html>

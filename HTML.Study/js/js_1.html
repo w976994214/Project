@@ -6,11 +6,34 @@
 </head>
 <body>
     <script type="text/javascript">
-        function randomint() {
-            var num = Math.random()
-            console.log(num)
+        //生成10以内的随机整数
+        // function randomint() {
+        //     var num = Math.random()*10
+        //     var new_num = Math.floor(num)
+        //     console.log(new_num)
+        // }
+        // randomint()
+
+        //生成指定范围的随机数
+        // function randomint(start,stop){
+        //     var num = Math.random()*(stop-start)+start;
+        //     var new_num = Math.floor(num);
+        //     console.log(new_num);
+        // }
+        // randomint(5,10)
+
+        //js乘法表
+        function xfb(){
+            var str = '';
+            for (x=1;x<10;x++){
+                for (y=1;y<x+1;y++){
+                    str += x + '*' + y + '=' + x*y + ' '
+                }
+                str += '\n'
+            }
+            console.log(str)
         }
-        randomint()
+        xfb()
 
     </script>
 </body>

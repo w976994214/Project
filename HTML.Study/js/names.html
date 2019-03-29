@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>点名器</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            width: 500px;
+            height: 300px;
+            background:pink;
+            position: fixed;
+            left: 40%;
+            top: 40%;
+        }
+        #name{
+            width: 300px;
+            height: 200px;
+            background-color: yellowgreen;
+            text-align: center;
+            margin: 30px 80px;
+            font-size: 80px;
+            line-height: 200px;
+        }
+        #start{
+            width: 80px;
+            height: 40px;
+            margin-left: 130px;
+        }
+        #stop{
+            width: 80px;
+            height: 40px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div id="name"></div>
+        <button id="start">START</button>
+        <button id="stop">STOP</button>
+    </div>
+
+    <script type="text/javascript">
+        var names = document.getElementById('name');
+        var starts = document.getElementById('start');
+        var stops = document.getElementById('stop');
+
+        var into;
+        //点击start触发
+        starts.onclick = function () {
+            //判断是否已经点击开始按钮
+            if (into != null)
+                return;
+            //通过定时器随机显示名字
+            into = setInterval(function () {
+                //名称表
+                var nm = [1,2,3,4,5,6,7,8,9,10,111,222,333];
+                //通过随机函数生成的随机数作索引下标
+                names.innerHTML = nm[rand(0,nm.length)];
+            },100)
+        };
+        //随机数
+        function rand(x,y) {
+            return Math.floor(Math.random()*(y-x)+x)
+        }
+
+        stops.onclick = function () {
+            clearInterval(into);
+            into = null
+        }
+
+    </script>
+
+</body>
+</html>

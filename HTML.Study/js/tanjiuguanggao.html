@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹球广告</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #qiu{
+            width: 200px;
+            height: 200px;
+            background-color:red;
+            border-radius: 50%;
+            position: absolute;
+        }
+        #guan{
+            line-height: 100px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="qiu">
+        <div id="guan">X</div>
+    </div>
+    <script type="text/javascript">
+        var qiu = document.getElementById('qiu');
+        var x = document.getElementById('guan')
+        //定义偏移量的步长
+        var stepl = 5;
+        var stept = 5;
+
+        var into;
+
+        //定义移动函数
+        function dong() {
+            into = setInterval(function () {
+                //获取左边和顶部的偏移量
+                var l = qiu.offsetLeft;
+                var t = qiu.offsetTop;
+                //设置新的偏移量
+                var nl = l+stepl;
+                var nt = t+stept;
+                //获取浏览器的可是区域宽高
+                var w = document.documentElement.clientWidth;
+                var h = document.documentElement.clientHeight;
+                //获取元素自身的宽高
+                var dw = qiu.offsetWidth;
+                var dh = qiu.offsetHeight;
+                //获取最大移动范围
+                var maxw = w - dw;
+                var maxh = h - dh;
+                //判断移动范围，如果超过最大值或最小值取反移动
+                if (nl >= maxw || nt <= 0){
+                    stepl *= -1;
+                }
+                if (nt >= maxh || nt <= 0){
+                    stept *=-1;
+                }
+
+                qiu.style.left = nl+'px';
+                qiu.style.top = nt +'px';
+
+            }, 100);
+        }
+        //调用dong函数
+        dong();
+        //鼠标移入停止移动
+        qiu.onmousemove = function () {
+            clearInterval(into);
+        };
+        //鼠标移出继续移动
+        qiu.onmouseout = function () {
+            dong();
+        };
+        //关闭广告
+        x.onmousedown = function () {
+            qiu.style.display = 'none';
+        }
+
+    </script>
+
+</body>
+</html>
