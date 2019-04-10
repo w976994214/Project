@@ -11,10 +11,12 @@ num = input("请输入一个三位数字")
 
 random_num = random.randrange(100, 1000)
 
+# 定义小于随机数情况，生成的字符串样式。
 def line():
     str_num = ''
     for i in range(4):
         num = random.randrange(97, 123)
+        # 通过chr将数字转换为字母
         str_s = chr(num)
         str_num = str_num + str_s
     for i in range(8):
