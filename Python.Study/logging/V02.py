@@ -1,12 +1,14 @@
 """
 装饰器
 使用装饰器打印函数执行的时间
+
 """
 
 import logging
 
 LOG_FORMAT = "%(asctime)s - %(levelname)s - %(message)s"
 logging.basicConfig(format=LOG_FORMAT)
+
 
 def log(func):
     def wrapper(*arg, **kw):
