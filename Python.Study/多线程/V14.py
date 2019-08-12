@@ -1,10 +1,12 @@
 """
 使用多线程去播放两个播放列表，一个是movie，一个是music
-_thread
-threading
+类的方式完成
+多进程 multiprocessing 去完成
 """
+import multiprocessing
 import threading as thread
 import time
+
 
 movie_list = ["复仇者.mp4", "钢铁侠.avi", "斗破.rmvb", "xxx.mp4"]
 music_list = ["周杰伦.mp3", "五月天.mp3"]
@@ -24,12 +26,17 @@ def play(playlist):
             print("播放列表为空")
 
 
-def thread_run():
-    t1 = thread.Thread(target=play, args=(movie_list,))
-    t2 = thread.Thread(target=play, args=(music_list,))
-    t1.start()
-    t2.start()
+class MyThread(thread.Thread):
+    def __init__(self, playlist):
+        super().__init__()
+        self.playlist = playlist
+
+    def run(self):
+        play(self.playlist)
 
 
-if __name__ == "__main__":
-    thread_run()
+if __name__ == '__main__':
+        t1 = multiprocessing.Process(target=play, args=(movie_list,))
+        t2 = multiprocessing.Process(target=play, args=(music_list,))
+        t1.start()
+        t2.start()

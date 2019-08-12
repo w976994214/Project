@@ -1,7 +1,7 @@
 """
 使用多线程去播放两个播放列表，一个是movie，一个是music
-_thread
-threading
+类的方式完成
+多进程 mutilprocession 去完成
 """
 import threading as thread
 import time
@@ -24,12 +24,17 @@ def play(playlist):
             print("播放列表为空")
 
 
-def thread_run():
-    t1 = thread.Thread(target=play, args=(movie_list,))
-    t2 = thread.Thread(target=play, args=(music_list,))
-    t1.start()
-    t2.start()
+class MyThread(thread.Thread):
+    def __init__(self, playlist):
+        super().__init__()
+        self.playlist = playlist
+
+    def run(self):
+        play(self.playlist)
 
 
 if __name__ == "__main__":
-    thread_run()
+    m1 = MyThread(movie_list)
+    m2 = MyThread(music_list)
+    m1.start()
+    m2.start()
