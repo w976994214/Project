@@ -11,11 +11,16 @@ tkinter项目实战-屏保
     ball
         颜色、大小、数量、运动方向、变形
         可移动，可以被调用
+
+新需求：
+    此屏保程序扩展成，一旦捕获事件，则判断屏保不退出
+    显示一个Button，button上显示事件类型，点击button退出屏保
 """
 
 
 import random
 import tkinter
+import tkinter.messagebox
 
 
 class RandomBall(object):
@@ -114,9 +119,9 @@ class ScreenSaver(object):
         self.root.overrideredirect(1)
 
         # 任何鼠标移动都取消
-        self.root.bind('<Motion>', lambda e: self.root.destroy())
+        self.root.bind('<Motion>', self.my_button)
         # 同理按动键盘都退出屏保
-        self.root.bind('<Key>', lambda e: self.root.destroy())
+        self.root.bind('<Key>', self.my_button)
 
         # 得到屏幕大小规格
         w, h = self.root.winfo_screenwidth(), self.root.winfo_screenheight()
@@ -133,6 +138,15 @@ class ScreenSaver(object):
 
         self.run_screen_saver()
         self.root.mainloop()
+
+    # 提示退出按键
+    def my_button(self, e):
+        # 询问是否退出
+        p = tkinter.messagebox.askokcancel('提示', e)
+
+        # 确认是否退出
+        if p == True:
+            self.root.destroy()
 
     def run_screen_saver(self):
         for ball in self.balls:
